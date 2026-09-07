@@ -1,68 +1,53 @@
-# Skills
+# skills
 
-A collection of portable, cross-agent skills and plugins for **Claude Code**, **OpenAI Codex**, and **Google Antigravity**, adhering to the open [agentskills.io](https://agentskills.io/specification) specification.
+A collection of agent skills for Claude Code, OpenAI Codex, and Google Antigravity, following the [agentskills.io](https://agentskills.io) specification.
 
-## Skills Included
+## Skills
 
-| Skill | Description |
-|---|---|
-| [`exa-fact-search`](./skills/exa-fact-search) | Routes web search and fact-finding through Exa's MCP tools (`web_search_exa`, `web_search_advanced_exa`, `web_fetch_exa`) with auto-detection for quick lookup vs. multi-facet report mode. |
-| [`skill-publisher`](./skills/skill-publisher) | Scaffolds an existing Agent Skill (`SKILL.md` folder) for cross-platform distribution across Claude Code, OpenAI Codex, and Google Antigravity — generating harness-specific manifests and repo layout. |
-
----
+- **[`exa-fact-search`](./skills/exa-fact-search)** — Route web searches and fact-finding through Exa's MCP tools with auto-detection for quick lookups vs. multi-facet research.
+- **[`skill-publisher`](./skills/skill-publisher)** — Scaffold and package agent skills for cross-platform distribution across Claude Code, OpenAI Codex, and Google Antigravity.
 
 ## Installation
 
-### 1. `exa-fact-search`
+### Universal
 
-| Agent | Command / Method |
-|---|---|
-| **Claude Code** | `claude plugin marketplace add yagnikpt/skills`<br>`claude plugin install exa-fact-search@skills` |
-| **OpenAI Codex** | `codex plugin marketplace add yagnikpt/skills`<br>`codex plugin add exa-fact-search@skills` |
-| **Google Antigravity** | `agy plugin install https://github.com/yagnikpt/skills/plugins/exa-fact-search`<br>_or copy `plugins/exa-fact-search/` into `.agents/plugins/` (workspace) or `~/.gemini/config/plugins/` (global)_ |
-| **Any `agentskills.io` Agent** | Copy `skills/exa-fact-search/` into the agent's skill directory |
+```bash
+npx skills add yagnikpt/skills
+```
 
-### 2. `skill-publisher`
+### Claude Code
 
-| Agent | Command / Method |
-|---|---|
-| **Claude Code** | `claude plugin marketplace add yagnikpt/skills`<br>`claude plugin install skill-publisher@skills` |
-| **OpenAI Codex** | `codex plugin marketplace add yagnikpt/skills`<br>`codex plugin add skill-publisher@skills` |
-| **Google Antigravity** | `agy plugin install https://github.com/yagnikpt/skills/plugins/skill-publisher`<br>_or copy `plugins/skill-publisher/` into `.agents/plugins/` (workspace) or `~/.gemini/config/plugins/` (global)_ |
-| **Any `agentskills.io` Agent** | Copy `skills/skill-publisher/` into the agent's skill directory |
+```bash
+claude plugin marketplace add yagnikpt/skills
+claude plugin install <skill-name>@skills
+```
 
----
+### OpenAI Codex
 
-## Repository Structure
+```bash
+codex plugin marketplace add yagnikpt/skills
+codex plugin add <skill-name>@skills
+```
 
-All skills maintain a single source of truth under `skills/`. Every harness-specific manifest or plugin wrapper points to the canonical skill folder via symlinks without duplicating content.
+### Google Antigravity
 
-```text
-skills/
-├── skills/
-│   ├── exa-fact-search/
-│   │   └── SKILL.md                          # Source of truth
-│   └── skill-publisher/
-│       └── SKILL.md                          # Source of truth
-├── plugins/
-│   ├── exa-fact-search/
-│   │   ├── plugin.json                       # Antigravity marker
-│   │   ├── .claude-plugin/plugin.json        # Claude plugin manifest
-│   │   ├── .codex-plugin/plugin.json         # Codex plugin manifest
-│   │   └── skills/exa-fact-search            # Symlink to ../../../skills/exa-fact-search
-│   └── skill-publisher/
-│       ├── plugin.json                       # Antigravity marker
-│       ├── .claude-plugin/plugin.json        # Claude plugin manifest
-│       ├── .codex-plugin/plugin.json         # Codex plugin manifest
-│       └── skills/skill-publisher            # Symlink to ../../../skills/skill-publisher
-├── .claude-plugin/
-│   ├── plugin.json                           # Repo-level Claude manifest
-│   └── marketplace.json                      # Claude marketplace catalog
-├── .codex-plugin/
-│   ├── plugin.json                           # Repo-level Codex manifest
-├── .agents/plugins/
-│   └── marketplace.json                      # Codex marketplace catalog
-└── README.md
+```bash
+agy plugin install https://github.com/yagnikpt/skills/plugins/<skill-name>
+```
+
+Or copy `plugins/<skill-name>/` into `.agents/plugins/` (project-level) or `~/.gemini/config/plugins/` (global).
+
+### Manual
+
+Copy `skills/<skill-name>/` directly into your agent's skill directory.
+
+## Development
+
+Canonical skills live under `skills/`. Plugin copies under `plugins/` are mirrored automatically:
+
+```bash
+./scripts/sync-skills.sh          # sync skills/ -> plugins/
+./scripts/sync-skills.sh --check  # check for drift
 ```
 
 ## License
