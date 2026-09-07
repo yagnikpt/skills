@@ -1,0 +1,9 @@
+{
+  "name": "skills",
+  "version": "1.0.0",
+  "description": "Agent skills collection for Claude Code, OpenAI Codex, and Google Antigravity",
+  "author": {
+    "name": "Yagnik"
+  },
+  "homepage": "https://github.com/yagnikpt/skills"
+}

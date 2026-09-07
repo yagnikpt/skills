@@ -1,0 +1,19 @@
+{
+  "name": "skills",
+  "plugins": [
+    {
+      "name": "exa-fact-search",
+      "source": {
+        "source": "local",
+        "path": "./plugins/exa-fact-search"
+      }
+    },
+    {
+      "name": "skill-publisher",
+      "source": {
+        "source": "local",
+        "path": "./plugins/skill-publisher"
+      }
+    }
+  ]
+}

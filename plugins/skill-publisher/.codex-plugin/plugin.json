@@ -1,0 +1,9 @@
+{
+  "name": "skill-publisher",
+  "version": "1.0.0",
+  "description": "Scaffold an existing Agent Skill (a SKILL.md folder) for cross-platform distribution across Claude Code, OpenAI Codex, and Google Antigravity \u2014 generating the harness-specific plugin manifests and repo layout needed to publish it on GitHub. Use when the user wants to publish, distribute, or package a skill for multiple agents, mentions hosting skills on GitHub for Claude/Codex/Antigravity, or asks how to make a skill \"portable\" or \"cross-agent\".",
+  "author": {
+    "name": "Yagnik"
+  },
+  "homepage": "https://github.com/yagnikpt/skills"
+}
