@@ -30,6 +30,8 @@ repo-root/
 ├── .agents/plugins/marketplace.json  # Codex marketplace entry
 ├── plugins/<name>/
 │   ├── plugin.json                   # Antigravity plugin marker
+│   ├── mcp_config.json               # Optional: Antigravity MCP server config
+│   ├── .mcp.json                     # Optional: Claude / Codex MCP server config
 │   └── skills/<name>/                # mirrored copy from skills/
 ├── scripts/sync-skills.sh            # auto-syncs skills/ into plugins/
 └── README.md                         # install table for all four
@@ -96,6 +98,14 @@ plugins/<name>/
 `skills/<name>` at the repo root is the canonical source of truth. The nested copy inside `plugins/<name>/skills/<name>` is automatically mirrored and kept identical using `scripts/sync-skills.sh` (and the pre-commit hook). This avoids raw symlink text blobs on GitHub's web interface, ensures markdown renders cleanly in browsers, and provides full out-of-the-box compatibility with Windows checkouts and ZIP downloads.
 
 Install has no registry step today: place the `plugins/<name>/` folder into `.agents/plugins/` at the workspace root (project-scoped) or `~/.gemini/config/plugins/` (global), or run `agy plugin install <path-or-url>` if the CLI is available. There's no marketplace.json equivalent — just "copy the folder in."
+
+## Bundling MCP Servers (Optional)
+
+If a skill relies on specialized tools (e.g. Exa search), you can package MCP server configurations inside the plugin:
+
+- **Claude Code & Codex**: Place `.mcp.json` at `plugins/<name>/.mcp.json` and declare `"mcpServers": "./.mcp.json"` in `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/.codex-plugin/plugin.json`.
+- **Google Antigravity**: Place `mcp_config.json` at `plugins/<name>/mcp_config.json`.
+- **Remote / Hosted Servers**: For hosted endpoints (e.g. `https://mcp.exa.ai/mcp`), use `"type": "http"`, `"url": "..."` in `.mcp.json` and `"serverUrl": "..."` in `mcp_config.json`. Users authenticate via OAuth without requiring an API key.
 
 ## README table
 

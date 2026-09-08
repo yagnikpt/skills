@@ -5,5 +5,6 @@
   "author": {
     "name": "Yagnik"
   },
-  "homepage": "https://github.com/yagnikpt/skills"
+  "homepage": "https://github.com/yagnikpt/skills",
+  "mcpServers": "./.mcp.json"
 }

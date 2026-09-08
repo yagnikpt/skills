@@ -4,7 +4,7 @@ A collection of agent skills for Claude Code, OpenAI Codex, and Google Antigravi
 
 ## Skills
 
-- **[`exa-fact-search`](./skills/exa-fact-search)** — Route web searches and fact-finding through Exa's MCP tools with auto-detection for quick lookups vs. multi-facet research.
+- **[`exa-fact-search`](./skills/exa-fact-search)** — Route web searches and fact-finding through Exa's MCP tools with auto-detection for quick lookups vs. multi-facet research. Bundles Exa's hosted MCP server with OAuth authentication.
 - **[`skill-publisher`](./skills/skill-publisher)** — Scaffold and package agent skills for cross-platform distribution across Claude Code, OpenAI Codex, and Google Antigravity.
 
 ## Installation

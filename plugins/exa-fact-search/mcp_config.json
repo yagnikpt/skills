@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "exa": {
+      "serverUrl": "https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa"
+    }
+  }
+}
