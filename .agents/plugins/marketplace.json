@@ -1,11 +1,11 @@
 {
-  "name": "skills",
+  "name": "yagnikpt-skills",
   "plugins": [
     {
-      "name": "exa-fact-search",
+      "name": "exa-search",
       "source": {
         "source": "local",
-        "path": "./plugins/exa-fact-search"
+        "path": "./plugins/exa-search"
       }
     },
     {
